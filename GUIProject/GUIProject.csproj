@@ -1,0 +1,781 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\netcoreapp3.0\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\netcoreapp3.0\EntityFramework.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\SQLite.3.13.0\build\net45\SQLite.props" Condition="Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{470D0FA9-A4EE-45AB-8DEC-E6695D3C409D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GUIProject</RootNamespace>
+    <AssemblyName>GUIProject</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="ObjectDesignLib">
+      <HintPath>..\..\GestionAllocationSurvivant\ObjectDesignLib\bin\Debug\ObjectDesignLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.115.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <HintPath>..\packages\System.Data.SQLite.x64.1.0.115.0\lib\net451\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.115.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.115.0\lib\net451\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.115.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.115.0\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\ModemTest.cs" />
+    <Compile Include="Classes\ToggleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSets\DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Etats\AppelLoyerCR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppelLoyerCR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Etats\ContratBailCR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContratBailCR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Etats\QuittanceLoyerCR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuittanceLoyerCR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Etats\RecuCR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecuCR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Etats\RecuElectricite.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecuElectricite.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Etats\RecuSecuriteCR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecuSecuriteCR.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutFrm.Designer.cs">
+      <DependentUpon>AboutFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AppartAddFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AppartAddFrm.Designer.cs">
+      <DependentUpon>AppartAddFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AppartFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AppartFrm.Designer.cs">
+      <DependentUpon>AppartFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BailleurFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BailleurFrm.Designer.cs">
+      <DependentUpon>BailleurFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChargePhotosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChargePhotosFrm.Designer.cs">
+      <DependentUpon>ChargePhotosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConfirmPaieFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConfirmPaieFrm.Designer.cs">
+      <DependentUpon>ConfirmPaieFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConnectionFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConnectionFrm.Designer.cs">
+      <DependentUpon>ConnectionFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EauFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EauFrm.Designer.cs">
+      <DependentUpon>EauFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ElecticiteFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ElecticiteFrm.Designer.cs">
+      <DependentUpon>ElecticiteFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EncaisserChargeFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EncaisserChargeFrm.Designer.cs">
+      <DependentUpon>EncaisserChargeFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EncaisserFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EncaisserFrm.Designer.cs">
+      <DependentUpon>EncaisserFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ExportDataFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ExportDataFrm.Designer.cs">
+      <DependentUpon>ExportDataFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FAQFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FAQFrm.Designer.cs">
+      <DependentUpon>FAQFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FileFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FileFrm.Designer.cs">
+      <DependentUpon>FileFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HistoriqueLoyer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HistoriqueLoyer.Designer.cs">
+      <DependentUpon>HistoriqueLoyer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InsertFAQFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InsertFAQFrm.Designer.cs">
+      <DependentUpon>InsertFAQFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LocataireAddFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LocataireAddFrm.Designer.cs">
+      <DependentUpon>LocataireAddFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LocataireAddFrm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LocataireAddFrm2.Designer.cs">
+      <DependentUpon>LocataireAddFrm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LocateurFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LocateurFrm.Designer.cs">
+      <DependentUpon>LocateurFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LocateurOptionFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LocateurOptionFrm.Designer.cs">
+      <DependentUpon>LocateurOptionFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MailFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MailFrm.Designer.cs">
+      <DependentUpon>MailFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PaiementChargeOptionFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaiementChargeOptionFrm.Designer.cs">
+      <DependentUpon>PaiementChargeOptionFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintFrm.Designer.cs">
+      <DependentUpon>PrintFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RestaureDataFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RestaureDataFrm.Designer.cs">
+      <DependentUpon>RestaureDataFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SauvegardeFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SauvegardeFrm.Designer.cs">
+      <DependentUpon>SauvegardeFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SecuriteFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SecuriteFrm.Designer.cs">
+      <DependentUpon>SecuriteFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SMSFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SMSFrm.Designer.cs">
+      <DependentUpon>SMSFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrincipalFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrincipalFrm.Designer.cs">
+      <DependentUpon>PrincipalFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserC\ConfirmPaieUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserC\ConfirmPaieUser.Designer.cs">
+      <DependentUpon>ConfirmPaieUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserC\DetailBailUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserC\DetailBailUser.Designer.cs">
+      <DependentUpon>DetailBailUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserC\FAQUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserC\FAQUserControl.Designer.cs">
+      <DependentUpon>FAQUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserC\LocataireAddUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserC\LocataireAddUser.Designer.cs">
+      <DependentUpon>LocataireAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserC\LocataireInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserC\LocataireInfo.Designer.cs">
+      <DependentUpon>LocataireInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserC\LocationLocataireUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserC\LocationLocataireUser.Designer.cs">
+      <DependentUpon>LocationLocataireUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserC\LocationUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserC\LocationUser.Designer.cs">
+      <DependentUpon>LocationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserC\PaiementChargeUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserC\PaiementChargeUser.Designer.cs">
+      <DependentUpon>PaiementChargeUser.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Etats\AppelLoyerCR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AppelLoyerCR.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Etats\ContratBailCR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ContratBailCR.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Etats\QuittanceLoyerCR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>QuittanceLoyerCR.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Etats\RecuCR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RecuCR.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Etats\RecuElectricite.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RecuElectricite.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Etats\RecuSecuriteCR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RecuSecuriteCR.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutFrm.resx">
+      <DependentUpon>AboutFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AppartAddFrm.resx">
+      <DependentUpon>AppartAddFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AppartFrm.resx">
+      <DependentUpon>AppartFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BailleurFrm.resx">
+      <DependentUpon>BailleurFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChargePhotosFrm.resx">
+      <DependentUpon>ChargePhotosFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConfirmPaieFrm.resx">
+      <DependentUpon>ConfirmPaieFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConnectionFrm.resx">
+      <DependentUpon>ConnectionFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EauFrm.resx">
+      <DependentUpon>EauFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ElecticiteFrm.resx">
+      <DependentUpon>ElecticiteFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EncaisserChargeFrm.resx">
+      <DependentUpon>EncaisserChargeFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EncaisserFrm.resx">
+      <DependentUpon>EncaisserFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ExportDataFrm.resx">
+      <DependentUpon>ExportDataFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FAQFrm.resx">
+      <DependentUpon>FAQFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FileFrm.resx">
+      <DependentUpon>FileFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HistoriqueLoyer.resx">
+      <DependentUpon>HistoriqueLoyer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InsertFAQFrm.resx">
+      <DependentUpon>InsertFAQFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LocataireAddFrm.resx">
+      <DependentUpon>LocataireAddFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LocataireAddFrm2.resx">
+      <DependentUpon>LocataireAddFrm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LocateurFrm.resx">
+      <DependentUpon>LocateurFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LocateurOptionFrm.resx">
+      <DependentUpon>LocateurOptionFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MailFrm.resx">
+      <DependentUpon>MailFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaiementChargeOptionFrm.resx">
+      <DependentUpon>PaiementChargeOptionFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintFrm.resx">
+      <DependentUpon>PrintFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RestaureDataFrm.resx">
+      <DependentUpon>RestaureDataFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SauvegardeFrm.resx">
+      <DependentUpon>SauvegardeFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SecuriteFrm.resx">
+      <DependentUpon>SecuriteFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SMSFrm.resx">
+      <DependentUpon>SMSFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrincipalFrm.resx">
+      <DependentUpon>PrincipalFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserC\ConfirmPaieUser.resx">
+      <DependentUpon>ConfirmPaieUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserC\DetailBailUser.resx">
+      <DependentUpon>DetailBailUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserC\FAQUserControl.resx">
+      <DependentUpon>FAQUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserC\LocataireAddUser.resx">
+      <DependentUpon>LocataireAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserC\LocataireInfo.resx">
+      <DependentUpon>LocataireInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserC\LocationLocataireUser.resx">
+      <DependentUpon>LocationLocataireUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserC\LocationUser.resx">
+      <DependentUpon>LocationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserC\PaiementChargeUser.resx">
+      <DependentUpon>PaiementChargeUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DataSets\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Download_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Businessman_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Businessman_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Businessman_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\House_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User Groups_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advertising_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Money Box_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Receipt_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Receipt_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Receipt_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Debt_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cash in Hand_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sell Property_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Car Insurance_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Car Insurance_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Print_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gmail_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Accounting_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Courthouse_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advertising_70px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advertising_90px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advertising_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Warning Shield_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Money Box_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gmail_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Car Insurance_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sell Property_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cash in Hand_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Autograph_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppartementLib\AppartementLib.csproj">
+      <Project>{4bd60991-eff5-4a67-9d70-abe97fac10bf}</Project>
+      <Name>AppartementLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LocationLib\LocationLib.csproj">
+      <Project>{efdc5206-b5cd-4864-81f1-4dbae1e08e44}</Project>
+      <Name>LocationLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ManageSingleConnexion\ManageSingleConnexion.csproj">
+      <Project>{5e2edac7-71cf-4450-a643-467c0a03abc2}</Project>
+      <Name>ManageSingleConnexion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PaiementLib\PaiementLib.csproj">
+      <Project>{c7f1535c-02e3-421e-8ccb-e6c90ce06adf}</Project>
+      <Name>PaiementLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserLib\UserLib.csproj">
+      <Project>{db04740b-4f94-49a5-8e36-8a8875b239ac}</Project>
+      <Name>UserLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UtilitiesLib\UtilitiesLib.csproj">
+      <Project>{94dab6e7-1700-40eb-bb44-f49faaf08af1}</Project>
+      <Name>UtilitiesLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\House_70px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Full Image_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cash in Hand_100px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trash_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit Property_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User Groups_70px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\House_70px2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iPhone_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit Property_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trash_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\View Details_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Money Box_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Key Exchange_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hand With Pen_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bill_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Electricity_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plumbing_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Policeman Male_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Warning Shield_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar 30_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cash in Hand_40px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Money Box_100px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plumbing_48px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Electricity_48px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advertising_70px2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stack of Photos_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SMS_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sent_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sent_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SMS Token_90px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\USB Connected_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\USB Disconnected_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sign Up_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SMS Token_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FAQ_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Capture.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\German House_100px.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLite.3.13.0\build\net45\SQLite.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\netcoreapp3.0\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\netcoreapp3.0\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\netcoreapp3.0\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\netcoreapp3.0\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\netcoreapp3.0\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\netcoreapp3.0\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
